@@ -1,24 +1,28 @@
 #!/bin/bash
 
-# Update the system
+# Update system
 yum update -y
 
 # Install Git
-yum install git -y
+yum install -y git
 
-# Install Python 3
-yum install python3 -y
+# Install Python 3 and pip
+yum install -y python3 python3-pip
 
-# Install pip
-yum install python3-pip -y
+# Change to ec2-user home
+cd /home/ec2-user
 
-# Create application directory
-mkdir -p /home/ec2-user/app
+# Clone the repository
+git clone https://github.com/ny1849288-dev/todo-app-aws-terraform.git
 
-# Store the S3 bucket name passed from Terraform
-echo "S3_BUCKET=${bucket_name}" > /home/ec2-user/app/.env
+# Change ownership
+chown -R ec2-user:ec2-user /home/ec2-user/todo-app-aws-terraform
 
-# Give ownership to ec2-user
-chown -R ec2-user:ec2-user /home/ec2-user/app
+# Move into Flask application
+cd /home/ec2-user/todo-app-aws-terraform/flask
 
-echo "Setup completed successfully!"
+# Install Python dependencies
+pip3 install -r requirements.txt
+
+# Start Flask application
+nohup python3 app.py > app.log 2>&1 &
