@@ -1,0 +1,42 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-sm-8">
+
+            <h2 class="mb-4">Edit Todo</h2>
+
+            <form method="POST">
+                
+
+                <div class="input-group mb-3">
+
+                    <input type="text"
+                           name="title"
+                           class="form-control"
+                           value="{{ todo.title }}">
+
+                    <div class="input-group-append">
+
+                        <button class="btn btn-success"
+                                type="submit">
+                            Update
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

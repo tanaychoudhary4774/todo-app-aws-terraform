@@ -1,0 +1,21 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
