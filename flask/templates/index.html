@@ -1,0 +1,82 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-sm-8">
+
+            <h2 class="mb-4">To Do App</h2>
+
+            <form action="/" method="POST">
+
+                <div class="form-group">
+
+                    <input type="text"
+                           name="title"
+                           class="form-control"
+                           placeholder="Enter task title"
+                           required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <input type="date"
+                           name="due_date"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                <button class="btn btn-dark"
+                        type="submit">
+                    Save Task
+                </button>
+
+            </form>
+
+            <hr>
+
+            {% for todo in todos %}
+
+            <div class="row mt-3">
+
+                <div class="col-8">
+
+                    <h5>{{ todo.title }}</h5>
+
+                    <small>
+                        Due Date:
+                        {{ todo.due_date }}
+                    </small>
+
+                </div>
+
+                <div class="col-4 text-right">
+
+                    <a href="{{ url_for('edit', id=todo.id) }}"
+                       class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+
+                    <a href="{{ url_for('delete', id=todo.id) }}"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
