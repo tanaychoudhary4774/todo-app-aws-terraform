@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 # S3 Configuration
 try:
     s3 = boto3.client('s3')
-except:
+except Exception:
     s3 = None
 
 BUCKET_NAME = 'my-todo-backup-bucket-294069345983-eu-north-1-an'
