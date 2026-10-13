@@ -1,9 +1,9 @@
 resource "aws_security_group" "todo_sg" {
 
-  name        = "todo-app-security-group"
+  name = "todo-app-security-group"
 
   description = "Security Group for Flask ToDo App"
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress {
 
@@ -12,7 +12,7 @@ resource "aws_security_group" "todo_sg" {
     from_port = var.app_port
 
     to_port = var.app_port
-   
+
     protocol = "tcp"
 
     cidr_blocks = ["0.0.0.0/0"]
