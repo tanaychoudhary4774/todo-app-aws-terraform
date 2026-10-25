@@ -9,6 +9,8 @@ resource "aws_instance" "todo_ec2" {
 
   iam_instance_profile = var.instance_profile
 
+  monitoring = true
+
   user_data = templatefile("${path.module}/../../userdata.sh", {
     bucket_name = var.bucket_name
   })
